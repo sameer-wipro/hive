@@ -27,19 +27,32 @@ language: java
 jdk:
   - oraclejdk8
 
+jobs:
+  include:
+    - jdk: openjdk11
+      arch: amd64
+    - jdk: openjdk11
+      arch: s390x
+    - jdk: openjdk11
+      arch: x86_64
+      
 # disabling cache for /home/travis/.m2/repository/org/apache/hive/hive-jdbc/3.0.0-SNAPSHOT/hive-jdbc-3.0.0-SNAPSHOT-standalone.jar (Permission denied)
-#cache:
-#  directories:
-#  - $HOME/.m2
+cache:
+  directories:
+  - $HOME/.m2
 
 env:
   MAVEN_SKIP_RC=true
   MAVEN_OPTS="-Xmx2g"
-
-# workaround added: https://github.com/travis-ci/travis-ci/issues/4629
+  
 before_install:
-  - sed -i.bak -e 's|https://nexus.codehaus.org/snapshots/|https://oss.sonatype.org/content/repositories/codehaus-snapshots/|g' ~/.m2/settings.xml
-
+  - sudo apt install -y maven
+  - ls -ltra $HOME/
+  - ls -ltra $HOME/.m2
+  - ls -ltra $HOME/.m2/repository
+  - cat $HOME/.m2/settings.xml
+  - sed -i -e 's|https://nexus.codehaus.org/snapshots/|https://oss.sonatype.org/content/repositories/codehaus-snapshots/|g' ~/.m2/settings.xml
+# workaround added: https://github.com/travis-ci/travis-ci/issues/4629
 
 install: true
 
