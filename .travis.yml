@@ -34,7 +34,7 @@ jobs:
     - jdk: openjdk11
       arch: s390x
     - jdk: openjdk11
-      arch: x86_64
+      os: linux
       
 # disabling cache for /home/travis/.m2/repository/org/apache/hive/hive-jdbc/3.0.0-SNAPSHOT/hive-jdbc-3.0.0-SNAPSHOT-standalone.jar (Permission denied)
 cache:
