@@ -32,6 +32,11 @@ jdk:
 #  directories:
 #  - $HOME/.m2
 
+jobs:
+  include:
+    - jdk: openjdk11
+      arch: amd64
+
 env:
   MAVEN_SKIP_RC=true
   MAVEN_OPTS="-Xmx2g"
