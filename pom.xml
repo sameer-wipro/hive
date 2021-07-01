@@ -61,7 +61,6 @@
     <module>testutils</module>
     <module>packaging</module>
     <module>standalone-metastore</module>
-    <module>upgrade-acid</module>
   </modules>
 
   <properties>
